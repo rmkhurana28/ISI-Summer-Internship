@@ -1,0 +1,30 @@
+# Makefile for tweaked Dilithium implementation
+# Run from main dilithium directory: make -f configs/Makefile.tweaks
+
+CC = gcc
+CFLAGS = -Wall -Wextra -O3 -fomit-frame-pointer
+LDFLAGS = -lssl -lcrypto -lm
+
+# Source files (relative to main dilithium directory)
+SOURCES = sign_tweaked.c packing.c polyvec.c poly_tweaked.c ntt.c reduce.c \
+          rounding.c fips202.c symmetric-shake.c randombytes.c
+
+# Test programs output to test directory
+TESTS = test/test_tweaked test/test_comparison
+
+.PHONY: all clean test
+
+all: $(TESTS)
+
+test/test_tweaked: test/test_dilithium.c $(SOURCES)
+	$(CC) $(CFLAGS) -DDILITHIUM_MODE=3 -o $@ $^ $(LDFLAGS)
+
+test/test_comparison: test/test_comparison_simple.c $(SOURCES) sign.c poly.c
+	$(CC) $(CFLAGS) -DDILITHIUM_MODE=3 -o $@ $^ $(LDFLAGS)
+
+clean:
+	rm -f *.o $(TESTS)
+
+test: all
+	./test/test_tweaked
+	./test/test_comparison

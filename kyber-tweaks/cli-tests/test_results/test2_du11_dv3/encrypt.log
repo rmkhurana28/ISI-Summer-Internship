@@ -1,0 +1,8 @@
+Public key loaded from: test.pub (800 bytes)
+Performing Kyber512 encapsulation...
+Ciphertext saved to: ct.bin (800 bytes)
+Shared secret saved to: ss_enc.bin (32 bytes)
+
+Encapsulation successful!
+Ciphertext size: 800 bytes
+Shared secret size: 32 bytes

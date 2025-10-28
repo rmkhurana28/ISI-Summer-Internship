@@ -1,0 +1,7 @@
+Generating Kyber512 keypair...
+Public key saved to: test.pub
+Secret key saved to: test.sec
+
+Key generation successful!
+Public key: 800 bytes
+Secret key: 1632 bytes

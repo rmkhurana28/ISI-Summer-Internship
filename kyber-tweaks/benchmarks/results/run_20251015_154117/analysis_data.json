@@ -1,0 +1,997 @@
+{
+  "timestamp": "20251015_154117",
+  "tests": {
+    "baseline_standard": {
+      "metadata": {
+        "Test Name": "baseline_standard",
+        "Config File": "params_baseline_standard.h",
+        "Description": "Standard Kyber parameters (reference)",
+        "Timestamp": "Wed Oct 15 03:41:17 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 2590,
+            "average": 2602
+          },
+          "polyvec_decompress": {
+            "median": 1663,
+            "average": 1683
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3760
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2071
+          },
+          "indcpa_keypair": {
+            "median": 112386,
+            "average": 112980
+          },
+          "indcpa_enc": {
+            "median": 131481,
+            "average": 132251
+          },
+          "indcpa_dec": {
+            "median": 47430,
+            "average": 47585
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 67
+          },
+          "polyvec_compress": {
+            "median": 3872,
+            "average": 3889
+          },
+          "polyvec_decompress": {
+            "median": 2518,
+            "average": 2541
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2132
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2078
+          },
+          "indcpa_keypair": {
+            "median": 188457,
+            "average": 193211
+          },
+          "indcpa_enc": {
+            "median": 207077,
+            "average": 210310
+          },
+          "indcpa_dec": {
+            "median": 62653,
+            "average": 63536
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 974,
+            "average": 983
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 574
+          },
+          "polyvec_compress": {
+            "median": 5226,
+            "average": 5266
+          },
+          "polyvec_decompress": {
+            "median": 3065,
+            "average": 3097
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2089
+          },
+          "poly_getnoise_eta2": {
+            "median": 2115,
+            "average": 2133
+          },
+          "indcpa_keypair": {
+            "median": 291960,
+            "average": 295859
+          },
+          "indcpa_enc": {
+            "median": 303170,
+            "average": 305645
+          },
+          "indcpa_dec": {
+            "median": 77283,
+            "average": 77937
+          }
+        }
+      }
+    },
+    "kyber1024_special_du10_dv6": {
+      "metadata": {
+        "Test Name": "kyber1024_special_du10_dv6",
+        "Config File": "params_kyber1024_du10_dv6.h",
+        "Description": "Kyber1024 with du=10, dv=6",
+        "Timestamp": "Wed Oct 15 03:43:16 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 975,
+            "average": 997
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 2590,
+            "average": 2620
+          },
+          "polyvec_decompress": {
+            "median": 1544,
+            "average": 1545
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3619
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2085
+          },
+          "indcpa_keypair": {
+            "median": 112362,
+            "average": 113042
+          },
+          "indcpa_enc": {
+            "median": 131172,
+            "average": 131912
+          },
+          "indcpa_dec": {
+            "median": 47833,
+            "average": 47992
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 974,
+            "average": 989
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 3896,
+            "average": 3931
+          },
+          "polyvec_decompress": {
+            "median": 2304,
+            "average": 2309
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2075
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2070
+          },
+          "indcpa_keypair": {
+            "median": 188006,
+            "average": 189076
+          },
+          "indcpa_enc": {
+            "median": 207053,
+            "average": 209390
+          },
+          "indcpa_dec": {
+            "median": 62962,
+            "average": 63166
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 879,
+            "average": 888
+          },
+          "poly_decompress": {
+            "median": 595,
+            "average": 603
+          },
+          "polyvec_compress": {
+            "median": 5226,
+            "average": 5267
+          },
+          "polyvec_decompress": {
+            "median": 3064,
+            "average": 3084
+          },
+          "poly_getnoise_eta1": {
+            "median": 2138,
+            "average": 2158
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2080
+          },
+          "indcpa_keypair": {
+            "median": 292506,
+            "average": 296490
+          },
+          "indcpa_enc": {
+            "median": 302861,
+            "average": 305920
+          },
+          "indcpa_dec": {
+            "median": 77473,
+            "average": 79720
+          }
+        }
+      }
+    },
+    "kyber1024_special_du11_dv5": {
+      "metadata": {
+        "Test Name": "kyber1024_special_du11_dv5",
+        "Config File": "params_kyber1024_du11_dv5.h",
+        "Description": "Kyber1024 with du=11, dv=5",
+        "Timestamp": "Wed Oct 15 03:42:56 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 974,
+            "average": 969
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 2590,
+            "average": 2615
+          },
+          "polyvec_decompress": {
+            "median": 1521,
+            "average": 1538
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3821
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2081
+          },
+          "indcpa_keypair": {
+            "median": 112149,
+            "average": 114744
+          },
+          "indcpa_enc": {
+            "median": 130269,
+            "average": 130909
+          },
+          "indcpa_dec": {
+            "median": 46955,
+            "average": 47754
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 974,
+            "average": 973
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 3896,
+            "average": 3933
+          },
+          "polyvec_decompress": {
+            "median": 2304,
+            "average": 2310
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2074
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2073
+          },
+          "indcpa_keypair": {
+            "median": 187910,
+            "average": 188970
+          },
+          "indcpa_enc": {
+            "median": 206531,
+            "average": 207594
+          },
+          "indcpa_dec": {
+            "median": 62796,
+            "average": 63004
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 879,
+            "average": 886
+          },
+          "poly_decompress": {
+            "median": 595,
+            "average": 603
+          },
+          "polyvec_compress": {
+            "median": 5226,
+            "average": 5259
+          },
+          "polyvec_decompress": {
+            "median": 3088,
+            "average": 3103
+          },
+          "poly_getnoise_eta1": {
+            "median": 2115,
+            "average": 2138
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2058
+          },
+          "indcpa_keypair": {
+            "median": 292125,
+            "average": 295283
+          },
+          "indcpa_enc": {
+            "median": 303288,
+            "average": 305484
+          },
+          "indcpa_dec": {
+            "median": 77474,
+            "average": 77782
+          }
+        }
+      }
+    },
+    "kyber1024_special_du12_dv4": {
+      "metadata": {
+        "Test Name": "kyber1024_special_du12_dv4",
+        "Config File": "params_kyber1024_du12_dv4.h",
+        "Description": "Kyber1024 with du=12, dv=4",
+        "Timestamp": "Wed Oct 15 03:43:35 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 2376,
+            "average": 2384
+          },
+          "polyvec_decompress": {
+            "median": 1022,
+            "average": 1027
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3641
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2077
+          },
+          "indcpa_keypair": {
+            "median": 112410,
+            "average": 113043
+          },
+          "indcpa_enc": {
+            "median": 131932,
+            "average": 132547
+          },
+          "indcpa_dec": {
+            "median": 46765,
+            "average": 46956
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 3563,
+            "average": 3579
+          },
+          "polyvec_decompress": {
+            "median": 1497,
+            "average": 1504
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2091
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2090
+          },
+          "indcpa_keypair": {
+            "median": 188054,
+            "average": 189090
+          },
+          "indcpa_enc": {
+            "median": 205723,
+            "average": 207787
+          },
+          "indcpa_dec": {
+            "median": 61038,
+            "average": 61380
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 4798,
+            "average": 4834
+          },
+          "polyvec_decompress": {
+            "median": 2043,
+            "average": 2054
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2083
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2081
+          },
+          "indcpa_keypair": {
+            "median": 290867,
+            "average": 293274
+          },
+          "indcpa_enc": {
+            "median": 302314,
+            "average": 303541
+          },
+          "indcpa_dec": {
+            "median": 75858,
+            "average": 77028
+          }
+        }
+      }
+    },
+    "test1_compression_du10_dv4": {
+      "metadata": {
+        "Test Name": "test1_compression_du10_dv4",
+        "Config File": "params_test1_du10_dv4.h",
+        "Description": "Compression parameters: du=10, dv=4",
+        "Timestamp": "Wed Oct 15 03:41:37 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 499,
+            "average": 502
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 68
+          },
+          "polyvec_compress": {
+            "median": 2566,
+            "average": 2593
+          },
+          "polyvec_decompress": {
+            "median": 1663,
+            "average": 1686
+          },
+          "poly_getnoise_eta1": {
+            "median": 3634,
+            "average": 3652
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2074
+          },
+          "indcpa_keypair": {
+            "median": 112314,
+            "average": 115318
+          },
+          "indcpa_enc": {
+            "median": 132075,
+            "average": 132715
+          },
+          "indcpa_dec": {
+            "median": 47406,
+            "average": 48625
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 3872,
+            "average": 3881
+          },
+          "polyvec_decompress": {
+            "median": 2518,
+            "average": 2537
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3643
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2075
+          },
+          "indcpa_keypair": {
+            "median": 197197,
+            "average": 198320
+          },
+          "indcpa_enc": {
+            "median": 210592,
+            "average": 211683
+          },
+          "indcpa_dec": {
+            "median": 62036,
+            "average": 62503
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 974,
+            "average": 986
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 5226,
+            "average": 5255
+          },
+          "polyvec_decompress": {
+            "median": 3064,
+            "average": 3102
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2090
+          },
+          "poly_getnoise_eta2": {
+            "median": 2115,
+            "average": 2137
+          },
+          "indcpa_keypair": {
+            "median": 292387,
+            "average": 295256
+          },
+          "indcpa_enc": {
+            "median": 302362,
+            "average": 305127
+          },
+          "indcpa_dec": {
+            "median": 77426,
+            "average": 81822
+          }
+        }
+      }
+    },
+    "test2_compression_du11_dv3": {
+      "metadata": {
+        "Test Name": "test2_compression_du11_dv3",
+        "Config File": "params_test2_du11_dv3.h",
+        "Description": "Compression parameters: du=11, dv=3",
+        "Timestamp": "Wed Oct 15 03:41:56 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 760,
+            "average": 752
+          },
+          "poly_decompress": {
+            "median": 594,
+            "average": 586
+          },
+          "polyvec_compress": {
+            "median": 2590,
+            "average": 2613
+          },
+          "polyvec_decompress": {
+            "median": 1544,
+            "average": 1536
+          },
+          "poly_getnoise_eta1": {
+            "median": 3634,
+            "average": 3684
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2078
+          },
+          "indcpa_keypair": {
+            "median": 112148,
+            "average": 113082
+          },
+          "indcpa_enc": {
+            "median": 131480,
+            "average": 132330
+          },
+          "indcpa_dec": {
+            "median": 47762,
+            "average": 47996
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 760,
+            "average": 750
+          },
+          "poly_decompress": {
+            "median": 594,
+            "average": 584
+          },
+          "polyvec_compress": {
+            "median": 3896,
+            "average": 3930
+          },
+          "polyvec_decompress": {
+            "median": 2304,
+            "average": 2308
+          },
+          "poly_getnoise_eta1": {
+            "median": 3611,
+            "average": 3640
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2076
+          },
+          "indcpa_keypair": {
+            "median": 197221,
+            "average": 198881
+          },
+          "indcpa_enc": {
+            "median": 210877,
+            "average": 212233
+          },
+          "indcpa_dec": {
+            "median": 62273,
+            "average": 62618
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 5131,
+            "average": 5171
+          },
+          "polyvec_decompress": {
+            "median": 3397,
+            "average": 3405
+          },
+          "poly_getnoise_eta1": {
+            "median": 2067,
+            "average": 2091
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2079
+          },
+          "indcpa_keypair": {
+            "median": 292078,
+            "average": 294378
+          },
+          "indcpa_enc": {
+            "median": 306614,
+            "average": 308653
+          },
+          "indcpa_dec": {
+            "median": 77901,
+            "average": 78253
+          }
+        }
+      }
+    },
+    "test3_compression_du9_dv5": {
+      "metadata": {
+        "Test Name": "test3_compression_du9_dv5",
+        "Config File": "params_test3_du9_dv5.h",
+        "Description": "Compression parameters: du=9, dv=5",
+        "Timestamp": "Wed Oct 15 03:42:16 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 974,
+            "average": 969
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 584
+          },
+          "polyvec_compress": {
+            "median": 2589,
+            "average": 2597
+          },
+          "polyvec_decompress": {
+            "median": 1474,
+            "average": 1496
+          },
+          "poly_getnoise_eta1": {
+            "median": 3634,
+            "average": 3655
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2082
+          },
+          "indcpa_keypair": {
+            "median": 112124,
+            "average": 112735
+          },
+          "indcpa_enc": {
+            "median": 130056,
+            "average": 130863
+          },
+          "indcpa_dec": {
+            "median": 47738,
+            "average": 47939
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 974,
+            "average": 986
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 573
+          },
+          "polyvec_compress": {
+            "median": 3872,
+            "average": 3899
+          },
+          "polyvec_decompress": {
+            "median": 2233,
+            "average": 2233
+          },
+          "poly_getnoise_eta1": {
+            "median": 2090,
+            "average": 2099
+          },
+          "poly_getnoise_eta2": {
+            "median": 2067,
+            "average": 2077
+          },
+          "indcpa_keypair": {
+            "median": 187887,
+            "average": 189896
+          },
+          "indcpa_enc": {
+            "median": 206626,
+            "average": 207703
+          },
+          "indcpa_dec": {
+            "median": 62914,
+            "average": 63214
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 998,
+            "average": 990
+          },
+          "poly_decompress": {
+            "median": 642,
+            "average": 667
+          },
+          "polyvec_compress": {
+            "median": 5226,
+            "average": 5262
+          },
+          "polyvec_decompress": {
+            "median": 3064,
+            "average": 3078
+          },
+          "poly_getnoise_eta1": {
+            "median": 2114,
+            "average": 2130
+          },
+          "poly_getnoise_eta2": {
+            "median": 2114,
+            "average": 2119
+          },
+          "indcpa_keypair": {
+            "median": 291295,
+            "average": 292864
+          },
+          "indcpa_enc": {
+            "median": 307777,
+            "average": 309844
+          },
+          "indcpa_dec": {
+            "median": 78162,
+            "average": 78434
+          }
+        }
+      }
+    },
+    "test4_eta_variations": {
+      "metadata": {
+        "Test Name": "test4_eta_variations",
+        "Config File": "params_test4_eta_variations.h",
+        "Description": "Modified eta values for noise distribution",
+        "Timestamp": "Wed Oct 15 03:42:36 PM IST 2025"
+      },
+      "results": {
+        "kyber512": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 2590,
+            "average": 2608
+          },
+          "polyvec_decompress": {
+            "median": 1663,
+            "average": 1680
+          },
+          "poly_getnoise_eta1": {
+            "median": 5724,
+            "average": 6445
+          },
+          "poly_getnoise_eta2": {
+            "median": 3635,
+            "average": 3692
+          },
+          "indcpa_keypair": {
+            "median": 122788,
+            "average": 124462
+          },
+          "indcpa_enc": {
+            "median": 143118,
+            "average": 143937
+          },
+          "indcpa_dec": {
+            "median": 49234,
+            "average": 49386
+          }
+        },
+        "kyber768": {
+          "poly_compress": {
+            "median": 499,
+            "average": 494
+          },
+          "poly_decompress": {
+            "median": 72,
+            "average": 66
+          },
+          "polyvec_compress": {
+            "median": 3895,
+            "average": 3909
+          },
+          "polyvec_decompress": {
+            "median": 2518,
+            "average": 2534
+          },
+          "poly_getnoise_eta1": {
+            "median": 3278,
+            "average": 3297
+          },
+          "poly_getnoise_eta2": {
+            "median": 3278,
+            "average": 3316
+          },
+          "indcpa_keypair": {
+            "median": 195843,
+            "average": 196894
+          },
+          "indcpa_enc": {
+            "median": 216767,
+            "average": 217835
+          },
+          "indcpa_dec": {
+            "median": 62178,
+            "average": 62437
+          }
+        },
+        "kyber1024": {
+          "poly_compress": {
+            "median": 975,
+            "average": 979
+          },
+          "poly_decompress": {
+            "median": 571,
+            "average": 588
+          },
+          "polyvec_compress": {
+            "median": 5202,
+            "average": 5240
+          },
+          "polyvec_decompress": {
+            "median": 3089,
+            "average": 3112
+          },
+          "poly_getnoise_eta1": {
+            "median": 3325,
+            "average": 3343
+          },
+          "poly_getnoise_eta2": {
+            "median": 3325,
+            "average": 3344
+          },
+          "indcpa_keypair": {
+            "median": 300795,
+            "average": 302669
+          },
+          "indcpa_enc": {
+            "median": 314309,
+            "average": 316356
+          },
+          "indcpa_dec": {
+            "median": 77331,
+            "average": 77611
+          }
+        }
+      }
+    }
+  }
+}

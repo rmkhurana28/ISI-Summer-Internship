@@ -1,0 +1,205 @@
+
+================================================================================
+Table 5.1: Performance analysis of Kyber512 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (10, 4)  | (du, dv) = (11, 3)  | (du, dv) = (9, 5)   
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 308      307      | 451      469      | 593      595      
+poly_decompress           | 47       53       | 355      360      | 355      354      
+polyvec_compress          | 1495     1502     | 1519     1524     | 1519     1540     
+polyvec_decompress        | 997      1004     | 925      921      | 901      891      
+indcpa_keypair            | 66523    67011    | 66452    67067    | 66380    67147    
+indcpa_enc                | 77519    78138    | 79775    80383    | 78944    79624    
+indcpa_dec                | 28096    28098    | 29354    29534    | 29378    30335    
+
+================================================================================
+Table 5.2: Performance analysis of Kyber768 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (10, 4)  | (du, dv) = (11, 3)  | (du, dv) = (9, 5)   
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 308      305      | 474      478      | 593      593      
+poly_decompress           | 47       52       | 379      374      | 355      357      
+polyvec_compress          | 2303     2324     | 2374     2391     | 2303     2433     
+polyvec_decompress        | 1519     1521     | 1424     1440     | 1352     1353     
+indcpa_keypair            | 117704   119546   | 129721   129254   | 115186   115860   
+indcpa_enc                | 125779   126940   | 143852   144543   | 134851   135611   
+indcpa_dec                | 37619    37900    | 41894    42017    | 40754    40952    
+
+================================================================================
+Table 5.3: Performance analysis of Kyber1024 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (11, 5)  | (du, dv) = (10, 6)  | (du, dv) = (12, 4)  
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 545      548      | 664      664      | 331      321      
+poly_decompress           | 379      383      | 427      442      | 47       54       
+polyvec_compress          | 3134     3162     | 3371     3383     | 3229     3237     
+polyvec_decompress        | 1923     1929     | 2279     2287     | 1305     1309     
+indcpa_keypair            | 188598   189343   | 196126   197089   | 193609   193604   
+indcpa_enc                | 204273   205545   | 213441   214468   | 211350   212145   
+indcpa_dec                | 51323    51493    | 53365    53729    | 52272    52819    
+
+================================================================================
+Table 5.4: Performance analysis of Kyber with different η1, η2 values
+================================================================================
+Variant         Configuration        Tη1        Tη2        KeyGen     Enc       
+--------------------------------------------------------------------------------
+Kyber512         (η1 = 3, η2 = 2)     2184       1234       66547      77566     
+Kyber512         (η1 = 5, η2 = 3)     3419       2160       74432      90462     
+Kyber768         (η1 = 2, η2 = 2)     1282       1448       115828     131859    
+Kyber768         (η1 = 4, η2 = 4)     2089       2113       123142     136680    
+Kyber1024        (η1 = 2, η2 = 2)     1234       1234       176391     188977    
+Kyber1024        (η1 = 4, η2 = 4)     2065       2042       194583     208738    
+
+================================================================================
+PERFORMANCE IMPACT SUMMARY
+================================================================================
+
+Test: kyber1024_special_du10_dv6
+Description: Kyber1024 with du=10, dv=6
+
+  KYBER512:
+    poly_compress       :     640 cycles (+107.8% vs baseline)
+    indcpa_keypair      :   72959 cycles (+9.6% vs baseline)
+    indcpa_enc          :   90296 cycles (+16.4% vs baseline)
+    indcpa_dec          :   33320 cycles (+17.9% vs baseline)
+
+  KYBER768:
+    poly_compress       :     616 cycles (+100.0% vs baseline)
+    indcpa_keypair      :  120554 cycles (+4.1% vs baseline)
+    indcpa_enc          :  139958 cycles (+6.1% vs baseline)
+    indcpa_dec          :   42227 cycles (+7.4% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     664 cycles (+12.0% vs baseline)
+    indcpa_keypair      :  196126 cycles (+11.2% vs baseline)
+    indcpa_enc          :  213441 cycles (+12.9% vs baseline)
+    indcpa_dec          :   53365 cycles (+10.7% vs baseline)
+
+Test: kyber1024_special_du11_dv5
+Description: Kyber1024 with du=11, dv=5
+
+  KYBER512:
+    poly_compress       :     593 cycles (+92.5% vs baseline)
+    indcpa_keypair      :   67212 cycles (+1.0% vs baseline)
+    indcpa_enc          :   81771 cycles (+5.4% vs baseline)
+    indcpa_dec          :   29236 cycles (+3.4% vs baseline)
+
+  KYBER768:
+    poly_compress       :     616 cycles (+100.0% vs baseline)
+    indcpa_keypair      :  124164 cycles (+7.2% vs baseline)
+    indcpa_enc          :  143093 cycles (+8.5% vs baseline)
+    indcpa_dec          :   42749 cycles (+8.7% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     545 cycles (-8.1% vs baseline)
+    indcpa_keypair      :  188598 cycles (+6.9% vs baseline)
+    indcpa_enc          :  204273 cycles (+8.1% vs baseline)
+    indcpa_dec          :   51323 cycles (+6.5% vs baseline)
+
+Test: kyber1024_special_du12_dv4
+Description: Kyber1024 with du=12, dv=4
+
+  KYBER512:
+    poly_compress       :     331 cycles (+7.5% vs baseline)
+    indcpa_keypair      :   74099 cycles (+11.3% vs baseline)
+    indcpa_enc          :   88041 cycles (+13.5% vs baseline)
+    indcpa_dec          :   31396 cycles (+11.1% vs baseline)
+
+  KYBER768:
+    poly_compress       :     332 cycles (+7.8% vs baseline)
+    indcpa_keypair      :  124354 cycles (+7.4% vs baseline)
+    indcpa_enc          :  142642 cycles (+8.2% vs baseline)
+    indcpa_dec          :   41894 cycles (+6.5% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     331 cycles (-44.2% vs baseline)
+    indcpa_keypair      :  193609 cycles (+9.8% vs baseline)
+    indcpa_enc          :  211350 cycles (+11.8% vs baseline)
+    indcpa_dec          :   52272 cycles (+8.4% vs baseline)
+
+Test: test1_compression_du10_dv4
+Description: Compression parameters: du=10, dv=4
+
+  KYBER512:
+    poly_compress       :     308 cycles (+0.0% vs baseline)
+    indcpa_keypair      :   66523 cycles (-0.0% vs baseline)
+    indcpa_enc          :   77519 cycles (-0.1% vs baseline)
+    indcpa_dec          :   28096 cycles (-0.6% vs baseline)
+
+  KYBER768:
+    poly_compress       :     308 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  117704 cycles (+1.6% vs baseline)
+    indcpa_enc          :  125779 cycles (-4.6% vs baseline)
+    indcpa_dec          :   37619 cycles (-4.3% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     593 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  181877 cycles (+3.1% vs baseline)
+    indcpa_enc          :  196506 cycles (+4.0% vs baseline)
+    indcpa_dec          :   49755 cycles (+3.2% vs baseline)
+
+Test: test2_compression_du11_dv3
+Description: Compression parameters: du=11, dv=3
+
+  KYBER512:
+    poly_compress       :     451 cycles (+46.4% vs baseline)
+    indcpa_keypair      :   66452 cycles (-0.1% vs baseline)
+    indcpa_enc          :   79775 cycles (+2.8% vs baseline)
+    indcpa_dec          :   29354 cycles (+3.9% vs baseline)
+
+  KYBER768:
+    poly_compress       :     474 cycles (+53.9% vs baseline)
+    indcpa_keypair      :  129721 cycles (+12.0% vs baseline)
+    indcpa_enc          :  143852 cycles (+9.1% vs baseline)
+    indcpa_dec          :   41894 cycles (+6.5% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     308 cycles (-48.1% vs baseline)
+    indcpa_keypair      :  179834 cycles (+2.0% vs baseline)
+    indcpa_enc          :  197599 cycles (+4.6% vs baseline)
+    indcpa_dec          :   49494 cycles (+2.7% vs baseline)
+
+Test: test3_compression_du9_dv5
+Description: Compression parameters: du=9, dv=5
+
+  KYBER512:
+    poly_compress       :     593 cycles (+92.5% vs baseline)
+    indcpa_keypair      :   66380 cycles (-0.3% vs baseline)
+    indcpa_enc          :   78944 cycles (+1.8% vs baseline)
+    indcpa_dec          :   29378 cycles (+3.9% vs baseline)
+
+  KYBER768:
+    poly_compress       :     593 cycles (+92.5% vs baseline)
+    indcpa_keypair      :  115186 cycles (-0.6% vs baseline)
+    indcpa_enc          :  134851 cycles (+2.3% vs baseline)
+    indcpa_dec          :   40754 cycles (+3.6% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     593 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  179193 cycles (+1.6% vs baseline)
+    indcpa_enc          :  196934 cycles (+4.2% vs baseline)
+    indcpa_dec          :   50396 cycles (+4.5% vs baseline)
+
+Test: test4_eta_variations
+Description: Modified eta values for noise distribution
+
+  KYBER512:
+    poly_compress       :     308 cycles (+0.0% vs baseline)
+    indcpa_keypair      :   74432 cycles (+11.8% vs baseline)
+    indcpa_enc          :   90462 cycles (+16.6% vs baseline)
+    indcpa_dec          :   30897 cycles (+9.3% vs baseline)
+
+  KYBER768:
+    poly_compress       :     331 cycles (+7.5% vs baseline)
+    indcpa_keypair      :  123142 cycles (+6.3% vs baseline)
+    indcpa_enc          :  136680 cycles (+3.7% vs baseline)
+    indcpa_dec          :   39401 cycles (+0.2% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     640 cycles (+7.9% vs baseline)
+    indcpa_keypair      :  194583 cycles (+10.3% vs baseline)
+    indcpa_enc          :  208738 cycles (+10.5% vs baseline)
+    indcpa_dec          :   50277 cycles (+4.3% vs baseline)

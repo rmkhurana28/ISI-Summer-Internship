@@ -1,0 +1,30 @@
+KYBER BENCHMARK SUMMARY
+Run: 20251012_105948
+=====================
+
+COMPRESSION PARAMETER IMPACT
+---------------------------
+Test 1 (du=10, dv=4): Baseline configuration
+Test 2 (du=11, dv=3): ~50% increase in compression time, minimal overall impact
+Test 3 (du=9, dv=5): >100% increase in compression time, 10-15% overall overhead
+
+ETA PARAMETER IMPACT
+-------------------
+Kyber512: +32% KeyGen, +34% Encryption
+Kyber768: +11% KeyGen, +8% Encryption  
+Kyber1024: +5% KeyGen, +3% Encryption
+
+RECOMMENDATIONS
+--------------
+1. For standard use: Keep original parameters
+2. For size optimization: Consider (du=11, dv=3) - good size/performance trade-off
+3. Avoid (du=9, dv=5) unless size reduction is critical
+4. Eta increases should be carefully evaluated against security requirements
+
+SPECIAL KYBER1024 CONFIGURATIONS
+--------------------------------
+(du=11, dv=5): +70% compression overhead, minimal benefit
+(du=10, dv=6): -5% KeyGen improvement, promising configuration
+(du=12, dv=4): Mixed results, variant-dependent impact
+
+For detailed analysis, see benchmark_report.html

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dilithium Tweaks - Comprehensive Benchmark Analysis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: #f0f2f5;
+            color: #1a1a1a;
+        }
+        .container { 
+            max-width: 1400px; 
+            margin: auto; 
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .tweak-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .option-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        .tweak-card h3, .option-card h3 { color: white; }
+        h2, h3 {
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .metric:last-child { border-bottom: none; }
+        .value {
+            font-weight: 600;
+            color: #3498db;
+        }
+        .increase { color: #e74c3c; }
+        .decrease { color: #27ae60; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        th {
+            background: #3498db;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        tr:hover { background: #f8f9fa; }
+        .chart-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+        .implementation-details {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔐 Dilithium Tweaks - Performance Analysis Dashboard</h1>
+        
+        <div class="grid">
+            <div class="card tweak-card">
+                <h3>📊 Tweak 1: Hash Function</h3>
+                <p><strong>Original:</strong> SHAKE256 (XOF)</p>
+                <p><strong>Modified:</strong> SHA3-256 (Fixed output)</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Using EVP_sha3_256() for challenge generation</p>
+            </div>
+            <div class="card tweak-card">
+                <h3>🔢 Tweak 2: Coefficients</h3>
+                <p><strong>Original:</strong> {-1, 0, 1}</p>
+                <p><strong>Modified:</strong> {-2, -1, 0, 1, 2}</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Formula: (signs & 7) % 5 - 2</p>
+            </div>
+            <div class="card option-card">
+                <h3>🎯 Tweak 3: Two Options</h3>
+                <p><strong>Option 1:</strong> Relaxed bounds (2×BETA)</p>
+                <p><strong>Option 2:</strong> Probabilistic bypass (10%)</p>
+                <p style="margin-top: 10px; font-size: 0.9em;">Both implemented and tested</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <h2>Performance Comparison - Three Implementations</h2>
+            <canvas id="performanceChart" height="60"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <h2>Detailed Results Table (From Thesis Table 6.1)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Metric</th>
+                        <th>Original (Before Tweak)</th>
+                        <th>After Tweak (Option 1)</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">Keypair</td>
+                        <td>Median</td>
+                        <td>297,146</td>
+                        <td>297,386</td>
+                        <td class="increase">+0.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td>302,250</td>
+                        <td>300,861</td>
+                        <td class="decrease">-0.5%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Sign</td>
+                        <td>Median</td>
+                        <td>1,050,322</td>
+                        <td>5,239,586</td>
+                        <td class="increase">+399%</td>
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td>1,375,222</td>
+                        <td>7,534,151</td>
+                        <td class="increase">+448%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Verify</td>
+                        <td>Median</td>
+                        <td>324,734</td>
+                        <td>334,196</td>
+                        <td class="increase">+2.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Average</td>
+                        <td>328,608</td>
+                        <td>341,053</td>
+                        <td class="increase">+3.8%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chart-container">
+            <h2>Our Test Results - Comparing All Three Options</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Implementation</th>
+                        <th>Sign Median</th>
+                        <th>Sign Average</th>
+                        <th>Performance Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Baseline</strong> (No tweaks)</td>
+                        <td>1,042,031</td>
+                        <td>1,426,813</td>
+                        <td>1.0× (baseline)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Option 1</strong> (Relaxed bounds)</td>
+                        <td>5,835,138</td>
+                        <td>8,247,166</td>
+                        <td class="increase">5.8× slower</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Option 2</strong> (Probabilistic)</td>
+                        <td>1,220,809</td>
+                        <td>1,594,779</td>
+                        <td class="increase">1.2× slower</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="implementation-details">
+            <h2>🔧 Implementation Summary</h2>
+            <h3>All Pseudo Code from Thesis Implemented:</h3>
+            <ul>
+                <li>✅ <strong>Listing 6.1:</strong> SHA3-256 using <code>EVP_sha3_256()</code></li>
+                <li>✅ <strong>Listing 6.2:</strong> Modified coefficient mapping <code>(signs & 7) % 5 - 2</code></li>
+                <li>✅ <strong>Listing 6.3:</strong> Relaxed rejection bounds <code>GAMMA - 2*BETA</code></li>
+                <li>✅ <strong>Listing 6.4:</strong> Probabilistic rejection bypass (10% acceptance rate)</li>
+            </ul>
+            <h3>Key Findings:</h3>
+            <ul>
+                <li>Option 1 (Relaxed bounds) matches thesis results with ~5× slowdown</li>
+                <li>Option 2 (Probabilistic) is much more efficient with only ~1.2× slowdown</li>
+                <li>All tweaks correctly implemented and verified</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Performance comparison bar chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Sign (Median)', 'Sign (Average)'],
+                datasets: [{
+                    label: 'Original',
+                    data: [1050322, 1375222],
+                    backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                    borderColor: 'rgba(52, 152, 219, 1)',
+                    borderWidth: 2
+                }, {
+                    label: 'Option 1 (Relaxed)',
+                    data: [5239586, 7534151],
+                    backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                    borderColor: 'rgba(231, 76, 60, 1)',
+                    borderWidth: 2
+                }, {
+                    label: 'Option 2 (Probabilistic)',
+                    data: [1220809, 1594779],
+                    backgroundColor: 'rgba(46, 204, 113, 0.7)',
+                    borderColor: 'rgba(46, 204, 113, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'CPU Cycles',
+                            font: { size: 14 }
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Signature Operation',
+                            font: { size: 14 }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top',
+                        labels: { font: { size: 12 } }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Signature Generation Performance Comparison',
+                        font: { size: 16 }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

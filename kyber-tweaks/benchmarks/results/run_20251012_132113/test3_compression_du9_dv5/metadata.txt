@@ -1,0 +1,4 @@
+Test Name: test3_compression_du9_dv5
+Config File: params_test3_du9_dv5.h
+Description: Compression parameters: du=9, dv=5
+Timestamp: Sun Oct 12 01:21:50 PM IST 2025

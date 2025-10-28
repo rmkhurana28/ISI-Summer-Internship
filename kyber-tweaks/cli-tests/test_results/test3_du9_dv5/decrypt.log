@@ -1,0 +1,7 @@
+Secret key loaded from: test.sec (1632 bytes)
+Ciphertext loaded from: ct.bin (736 bytes)
+Performing Kyber512 decapsulation...
+Shared secret saved to: ss_dec.bin (32 bytes)
+
+Decapsulation successful!
+Shared secret size: 32 bytes

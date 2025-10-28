@@ -1,0 +1,79 @@
+================================================================================
+STATISTICAL ANALYSIS REPORT
+================================================================================
+
+1. CONFIDENCE INTERVALS (95% CI)
+------------------------------------------------------------
+
+baseline_standard:
+  kyber512:
+    poly_compress: 306 ± 0.3 (±0.10%)
+    indcpa_keypair: 68094 ± 66.7 (±0.10%)
+
+test2_compression_du11_dv3:
+  kyber512:
+    poly_compress: 456 ± 0.4 (±0.10%)
+    indcpa_keypair: 67644 ± 66.3 (±0.10%)
+
+test4_eta_variations:
+  kyber512:
+    poly_compress: 308 ± 0.3 (±0.10%)
+    indcpa_keypair: 74958 ± 73.5 (±0.10%)
+
+
+2. STATISTICAL SIGNIFICANCE TESTS (vs Baseline)
+------------------------------------------------------------
+
+test2_compression_du11_dv3:
+  kyber512:
+    poly_compress: +49.0% (p=0.0000) ***
+    indcpa_keypair: -0.7% (p=0.0000) ***
+  kyber768:
+    poly_compress: +51.3% (p=0.0000) ***
+    indcpa_keypair: +6.9% (p=0.0000) ***
+
+test3_compression_du9_dv5:
+  kyber512:
+    poly_compress: +97.7% (p=0.0000) ***
+    indcpa_keypair: +0.1% (p=0.3720) ns
+  kyber768:
+    poly_compress: +95.4% (p=0.0000) ***
+    indcpa_keypair: +1.1% (p=0.0000) ***
+
+test4_eta_variations:
+  kyber512:
+    poly_compress: +0.7% (p=0.0000) ***
+    indcpa_keypair: +10.1% (p=0.0000) ***
+  kyber768:
+    poly_compress: -0.3% (p=0.0000) ***
+    indcpa_keypair: +3.5% (p=0.0000) ***
+
+
+3. VARIANCE ANALYSIS ACROSS CONFIGURATIONS
+------------------------------------------------------------
+
+poly_compress:
+  Coefficient of Variation: 30.85%
+  Relative Range: 73.3%
+
+indcpa_keypair:
+  Coefficient of Variation: 39.00%
+  Relative Range: 101.6%
+
+indcpa_enc:
+  Coefficient of Variation: 36.23%
+  Relative Range: 103.9%
+
+
+4. SUMMARY
+------------------------------------------------------------
+
+Statistical Significance Legend:
+  *** p < 0.01 (highly significant)
+  **  p < 0.05 (significant)
+  ns  p ≥ 0.05 (not significant)
+
+Key Findings:
+- Confidence intervals are tight (typically <1% margin)
+- Most parameter changes show statistically significant impact
+- Compression operations show highest variance across configurations

@@ -1,0 +1,48 @@
+CC = gcc
+CFLAGS = -Wall -O2 -DDILITHIUM_MODE=3 -I. -I..
+LDFLAGS = -lm -lssl -lcrypto
+
+DILITHIUM_DIR = ../dilithium
+
+# For basic testing, let's just build with baseline
+DILITHIUM_SRCS = $(DILITHIUM_DIR)/sign.c \
+                 $(DILITHIUM_DIR)/poly.c \
+                 $(DILITHIUM_DIR)/packing.c \
+                 $(DILITHIUM_DIR)/polyvec.c \
+                 $(DILITHIUM_DIR)/ntt.c \
+                 $(DILITHIUM_DIR)/reduce.c \
+                 $(DILITHIUM_DIR)/rounding.c \
+                 $(DILITHIUM_DIR)/fips202.c \
+                 $(DILITHIUM_DIR)/symmetric-shake.c \
+                 $(DILITHIUM_DIR)/randombytes.c
+
+# Build all three tools
+all: cli_keygen_simple cli_sign cli_verify
+
+cli_keygen_simple: src/cli_keygen_simple.c src/common.o
+	$(CC) $(CFLAGS) $^ $(DILITHIUM_SRCS) $(LDFLAGS) -o $@
+
+cli_sign: src/cli_sign.c src/common.o
+	$(CC) $(CFLAGS) $^ $(DILITHIUM_SRCS) $(LDFLAGS) -o $@
+
+cli_verify: src/cli_verify.c src/common.o
+	$(CC) $(CFLAGS) $^ $(DILITHIUM_SRCS) $(LDFLAGS) -o $@
+
+src/common.o: src/common.c include/common.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+test: all
+	@echo "=== Running complete test ==="
+	./cli_keygen_simple -o test_key -v
+	./cli_sign -i test_data/messages/short.txt -k output/keys/test_key.sk -o test.sig -m baseline -v
+	./cli_verify -i test_data/messages/short.txt -s output/signatures/test.sig -k output/keys/test_key.pk -v
+
+# Clean only binaries and object files, NOT the output data
+clean:
+	rm -f cli_keygen_simple cli_sign cli_verify src/*.o
+
+# Separate target to clean everything including keys and signatures
+cleanall: clean
+	rm -f output/keys/* output/signatures/*
+
+.PHONY: all clean cleanall test

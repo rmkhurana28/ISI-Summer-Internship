@@ -1,0 +1,68 @@
+POST-QUANTUM CRYPTOGRAPHIC PARAMETER OPTIMIZATIONS - COMBINED RESULTS
+====================================================================
+Generated: Wed Oct 15 04:27:05 PM IST 2025
+====================================================================
+
+This analysis covers parameter optimizations for two NIST post-quantum standards:
+- Kyber (Key Encapsulation Mechanism)
+- Dilithium (Digital Signature Scheme)
+
+====================================================================
+EXECUTIVE SUMMARY
+====================================================================
+
+1. KYBER OPTIMIZATION RESULTS
+-----------------------------
+Best Configuration: (du=11, dv=3)
+- Ciphertext Size Reduction: 4% (32 bytes)
+- Performance Overhead: ~5%
+- Security Level: Maintained (Level 1/3/5)
+- Recommendation: OPTIMAL for size-constrained applications
+
+Alternative Configurations:
+- (du=9, dv=5): +4% size, +15% overhead - NOT RECOMMENDED
+- Eta variations: No size change, +20-30% overhead - For higher security margin
+
+2. DILITHIUM TWEAKS RESULTS
+---------------------------
+Best Configuration: Option 2 (Probabilistic Bypass)
+- Signing Time: ~8.7ms (1.4x baseline)
+- Variance: Moderate
+- Compatibility: Requires matched verifier
+- Recommendation: BEST balance for practical use
+
+Alternative Implementations:
+- Baseline: ~6.5ms - Standard implementation
+- Option 1: ~11ms (high variance) - Research interest only
+
+====================================================================
+DETAILED RESULTS
+====================================================================
+
+
+--- KYBER PARAMETER OPTIMIZATION ---
+
+Kyber detailed results in: kyber-tweaks/thesis_results_20251015_162057.txt
+
+--- DILITHIUM CRYPTOGRAPHIC TWEAKS ---
+
+
+====================================================================
+GENERATED FILES
+====================================================================
+
+Kyber Analysis:
+- Performance Report: kyber-tweaks/benchmarks/results/run_*/report/benchmark_report.html
+- Security Analysis: kyber-tweaks/kyber-security-analysis/results/
+- Summary: kyber-tweaks/thesis_results_*.txt
+
+Dilithium Analysis:
+- Performance Report: dilithium-tweaks/dilithium_tweaks_final_report.html
+- Benchmark Data: dilithium-tweaks/benchmarks/
+- Test Results: dilithium-tweaks/cli-tests/output/
+
+Combined:
+- Master Log: /home/meher/Documents/kyber-dilithium-tweaks/master_demo_20251015_162057.log
+- This Summary: /home/meher/Documents/kyber-dilithium-tweaks/combined_results_20251015_162057.txt
+
+====================================================================

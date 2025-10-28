@@ -1,0 +1,4 @@
+Test Name: test1_compression_du10_dv4
+Config File: params_test1_du10_dv4.h
+Description: Compression parameters: du=10, dv=4
+Timestamp: Wed Oct 15 04:21:20 PM IST 2025

@@ -1,0 +1,4 @@
+Test Name: test2_compression_du11_dv3
+Config File: params_test2_du11_dv3.h
+Description: Compression parameters: du=11, dv=3
+Timestamp: Sun Oct 12 01:21:39 PM IST 2025

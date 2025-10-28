@@ -1,0 +1,28 @@
+=== BENCHMARK RUN SUMMARY ===
+Timestamp: 20251015_153511
+Tests executed:
+
+- baseline_standard
+Description: Standard Kyber parameters (reference)
+
+- kyber1024_special_du10_dv6
+Description: Kyber1024 with du=10, dv=6
+
+- kyber1024_special_du11_dv5
+Description: Kyber1024 with du=11, dv=5
+
+- kyber1024_special_du12_dv4
+Description: Kyber1024 with du=12, dv=4
+
+- test1_compression_du10_dv4
+Description: Compression parameters: du=10, dv=4
+
+- test2_compression_du11_dv3
+Description: Compression parameters: du=11, dv=3
+
+- test3_compression_du9_dv5
+Description: Compression parameters: du=9, dv=5
+
+- test4_eta_variations
+Description: Modified eta values for noise distribution
+

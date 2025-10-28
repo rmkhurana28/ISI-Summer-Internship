@@ -1,0 +1,60 @@
+
+╔═══════════════════════════════════════════╗
+║     Kyber Parameter Tweaks Demo          ║
+║     Variant: Kyber512                    ║
+╚═══════════════════════════════════════════╝
+
+=== Current Kyber Parameters ===
+Variant: Kyber512
+Security Level: 2
+eta1: 5 (modified)
+eta2: 3 (modified)
+==============================
+
+=== Size Comparison ===
+Current configuration:
+  Compression (du, dv): (4, 10)
+  eta1: 5, eta2: 3
+
+Size impact:
+  Public key:     800 bytes
+  Secret key:    1632 bytes
+  Ciphertext:     768 bytes
+  Shared secret:   32 bytes
+
+Ciphertext size vs standard: +0 bytes (+0.0%)
+
+=== Performance Characteristics ===
+Based on compression parameters:
+  • Standard compression parameters
+  • Baseline performance
+
+Noise parameter impact:
+  • Increased eta values detected
+  • Key generation: ~20-30% slower
+  • Encryption: ~15-25% slower
+
+=== Running Kyber Demo ===
+
+1. Generating keypair...
+   ✓ Keypair generated in 0.11 ms
+
+2. Encapsulating (creating ciphertext)...
+   ✓ Ciphertext created in 0.13 ms
+   Ciphertext size: 768 bytes
+
+3. Decapsulating (recovering shared secret)...
+   ✓ Shared secret recovered in 0.15 ms
+
+4. Verifying shared secrets match...
+   ✓ SUCCESS: Shared secrets match!
+   Shared secret (first 16 bytes): 833fbbef 473cb91a 628b685d 777fa223 
+
+5. Sample data visualization:
+   Public key (first 32 bytes):
+   b3673c01 2ba3bdab 062ec85a d300c06e f54bf0fb 8f050ca5 4b29125e 014c8bac
+   Ciphertext (first 32 bytes):
+   41404031 bc582909 992d230c 7fbf4a7e fd9f2377 5b78a1c5 9799b9a5 55920b97
+
+=== Demo Complete ===
+This configuration demonstrates modified noise parameters (eta variations)

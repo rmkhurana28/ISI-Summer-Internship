@@ -1,0 +1,120 @@
+CC = gcc
+CFLAGS = -Wall -O2 -DDILITHIUM_MODE=3 -I. -I..
+LDFLAGS = -lm -lssl -lcrypto
+
+DILITHIUM_DIR = ../dilithium
+
+# Common files (used by all implementations)
+COMMON_SRCS = $(DILITHIUM_DIR)/packing.c \
+              $(DILITHIUM_DIR)/polyvec.c \
+              $(DILITHIUM_DIR)/ntt.c \
+              $(DILITHIUM_DIR)/reduce.c \
+              $(DILITHIUM_DIR)/rounding.c \
+              $(DILITHIUM_DIR)/fips202.c \
+              $(DILITHIUM_DIR)/symmetric-shake.c \
+              $(DILITHIUM_DIR)/randombytes.c
+
+# Build separate executables for each implementation
+all: cli_sign_baseline cli_sign_option1 cli_sign_option2 cli_keygen_simple cli_verify cli_verify_option1 cli_verify_option2 cli_compare cli_benchmark_detailed
+
+# Baseline signing (original implementation)
+cli_sign_baseline: src/cli_sign.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) -DUSE_BASELINE $< src/common.o \
+	$(DILITHIUM_DIR)/sign.c $(DILITHIUM_DIR)/poly.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Option 1 signing (relaxed bounds)
+cli_sign_option1: src/cli_sign.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) -DUSE_OPTION1 $< src/common.o \
+	$(DILITHIUM_DIR)/sign_tweaked.c $(DILITHIUM_DIR)/poly_tweaked.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Option 2 signing (probabilistic)
+cli_sign_option2: src/cli_sign.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) -DUSE_OPTION2 $< src/common.o \
+	$(DILITHIUM_DIR)/sign_tweaked_prob.c $(DILITHIUM_DIR)/poly_tweaked.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Key generation (same for all)
+cli_keygen_simple: src/cli_keygen_simple.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) $< src/common.o \
+	$(DILITHIUM_DIR)/sign.c $(DILITHIUM_DIR)/poly.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Verification - baseline (uses original poly.c)
+cli_verify: src/cli_verify.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) $< src/common.o \
+	$(DILITHIUM_DIR)/sign.c $(DILITHIUM_DIR)/poly.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Tweaked verifier for Option 1 (uses poly_tweaked.c)
+cli_verify_option1: src/cli_verify_tweaked.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) -DUSE_OPTION1 $< src/common.o \
+	$(DILITHIUM_DIR)/sign.c $(DILITHIUM_DIR)/poly_tweaked.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Tweaked verifier for Option 2 (uses poly_tweaked.c)
+cli_verify_option2: src/cli_verify_tweaked.c src/common.o $(COMMON_SRCS)
+	$(CC) $(CFLAGS) -DUSE_OPTION2 $< src/common.o \
+	$(DILITHIUM_DIR)/sign.c $(DILITHIUM_DIR)/poly_tweaked.c $(COMMON_SRCS) \
+	$(LDFLAGS) -o $@
+
+# Comparison tool
+cli_compare: src/cli_compare.c src/common.o
+	$(CC) $(CFLAGS) $< src/common.o $(LDFLAGS) -o $@
+
+# Detailed benchmark tool
+cli_benchmark_detailed: src/cli_benchmark_detailed.c src/common.o
+	$(CC) $(CFLAGS) $< src/common.o $(LDFLAGS) -o $@
+
+src/common.o: src/common.c include/common.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+test_tweaks: all
+	@echo "=== Testing All Implementations ==="
+	@echo "1. Generating keys..."
+	./cli_keygen_simple -o test_key
+	@echo -e "\n2. Signing with baseline..."
+	./cli_sign_baseline -i test_data/messages/short.txt -k output/keys/test_key.sk -o baseline.sig -m baseline
+	@echo -e "\n3. Signing with option1 (relaxed bounds)..."
+	./cli_sign_option1 -i test_data/messages/short.txt -k output/keys/test_key.sk -o option1.sig -m option1
+	@echo -e "\n4. Signing with option2 (probabilistic)..."
+	./cli_sign_option2 -i test_data/messages/short.txt -k output/keys/test_key.sk -o option2.sig -m option2
+	@echo -e "\n5. Verifying with matched verifiers..."
+	@echo "Baseline signature with baseline verifier:"
+	./cli_verify -i test_data/messages/short.txt -s output/signatures/baseline.sig -k output/keys/test_key.pk
+	@echo "Option1 signature with option1 verifier:"
+	./cli_verify_option1 test_data/messages/short.txt output/signatures/option1.sig output/keys/test_key.pk
+	@echo "Option2 signature with option2 verifier:"
+	./cli_verify_option2 test_data/messages/short.txt output/signatures/option2.sig output/keys/test_key.pk
+	@echo -e "\n6. Cross-verification tests (should fail)..."
+	@echo "Option1 signature with baseline verifier (should fail):"
+	-./cli_verify -i test_data/messages/short.txt -s output/signatures/option1.sig -k output/keys/test_key.pk
+	@echo "Baseline signature with option1 verifier (should fail):"
+	-./cli_verify_option1 test_data/messages/short.txt output/signatures/baseline.sig output/keys/test_key.pk
+
+test_performance: all
+	@echo "=== Performance Comparison ==="
+	@echo "Signing the same message 10 times with each implementation..."
+	@echo -e "\nBaseline:"
+	@time for i in {1..10}; do ./cli_sign_baseline -i test_data/messages/short.txt -k output/keys/test_key.sk -o temp.sig -m baseline >/dev/null 2>&1; done
+	@echo -e "\nOption 1 (Relaxed Bounds):"
+	@time for i in {1..10}; do ./cli_sign_option1 -i test_data/messages/short.txt -k output/keys/test_key.sk -o temp.sig -m option1 >/dev/null 2>&1; done
+	@echo -e "\nOption 2 (Probabilistic):"
+	@time for i in {1..10}; do ./cli_sign_option2 -i test_data/messages/short.txt -k output/keys/test_key.sk -o temp.sig -m option2 >/dev/null 2>&1; done
+
+# New benchmark target for detailed statistics
+benchmark: all
+	./cli_benchmark_detailed
+
+clean:
+	rm -f cli_sign_baseline cli_sign_option1 cli_sign_option2 cli_keygen_simple 
+	rm -f cli_verify cli_verify_option1 cli_verify_option2 cli_compare
+	rm -f cli_benchmark_detailed
+	rm -f src/*.o
+	rm -f output/signatures/temp.sig
+
+cleanall: clean
+	rm -f output/keys/* output/signatures/*
+
+.PHONY: all clean cleanall test_tweaks test_performance benchmark

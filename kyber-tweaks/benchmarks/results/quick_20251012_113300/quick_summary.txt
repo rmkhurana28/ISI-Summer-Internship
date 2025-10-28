@@ -1,0 +1,35 @@
+QUICK BENCHMARK SUMMARY
+======================
+
+This quick benchmark provides rapid feedback by:
+1. Running existing test binaries with timeout
+2. Capturing first results only (not full 10k iterations)
+3. Testing only Kyber512 by default
+
+For accurate results, run full benchmark: ./run_cycle_counts.sh
+Timestamp: 20251012_113300
+Tests executed:
+- baseline_standard
+  Sample results:
+    poly_compress: 
+    indcpa_keypair: 
+    indcpa_enc: 
+    indcpa_dec: 
+- compression_du11_dv3
+  Sample results:
+    poly_compress: 
+    indcpa_keypair: 
+    indcpa_enc: 
+    indcpa_dec: 
+- compression_du9_dv5
+  Sample results:
+    poly_compress: 
+    indcpa_keypair: 
+    indcpa_enc: 
+    indcpa_dec: 
+- eta_variations
+  Sample results:
+    poly_compress: 
+    indcpa_keypair: 
+    indcpa_enc: 
+    indcpa_dec: 

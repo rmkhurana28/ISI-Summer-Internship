@@ -1,0 +1,96 @@
+gen_a: 
+median: 28333 cycles/ticks
+average: 28723 cycles/ticks
+
+poly_getnoise_eta1: 
+median: 2208 cycles/ticks
+average: 2223 cycles/ticks
+
+poly_getnoise_eta2: 
+median: 1282 cycles/ticks
+average: 1295 cycles/ticks
+
+NTT: 
+median: 6174 cycles/ticks
+average: 6233 cycles/ticks
+
+INVNTT: 
+median: 8311 cycles/ticks
+average: 8356 cycles/ticks
+
+polyvec_basemul_acc_montgomery: 
+median: 7338 cycles/ticks
+average: 7455 cycles/ticks
+
+poly_tomsg: 
+median: 403 cycles/ticks
+average: 407 cycles/ticks
+
+poly_frommsg: 
+median: 1021 cycles/ticks
+average: 1034 cycles/ticks
+
+poly_compress: 
+median: 308 cycles/ticks
+average: 309 cycles/ticks
+
+poly_decompress: 
+median: 47 cycles/ticks
+average: 52 cycles/ticks
+
+polyvec_compress: 
+median: 2350 cycles/ticks
+average: 2363 cycles/ticks
+
+polyvec_decompress: 
+median: 1543 cycles/ticks
+average: 1557 cycles/ticks
+
+indcpa_keypair: 
+median: 118797 cycles/ticks
+average: 120408 cycles/ticks
+
+indcpa_enc: 
+median: 127631 cycles/ticks
+average: 127917 cycles/ticks
+
+indcpa_dec: 
+median: 37642 cycles/ticks
+average: 37794 cycles/ticks
+
+kyber_keypair: 
+median: 126397 cycles/ticks
+average: 126861 cycles/ticks
+
+kyber_encaps: 
+median: 146038 cycles/ticks
+average: 147445 cycles/ticks
+
+kyber_decaps: 
+median: 173730 cycles/ticks
+average: 174491 cycles/ticks
+
+kex_uake_initA: 
+median: 272815 cycles/ticks
+average: 275306 cycles/ticks
+
+kex_uake_sharedB: 
+median: 329316 cycles/ticks
+average: 331098 cycles/ticks
+
+kex_uake_sharedA: 
+median: 177862 cycles/ticks
+average: 179012 cycles/ticks
+
+kex_ake_initA: 
+median: 277850 cycles/ticks
+average: 281709 cycles/ticks
+
+kex_ake_sharedB: 
+median: 484166 cycles/ticks
+average: 486134 cycles/ticks
+
+kex_ake_sharedA: 
+median: 361736 cycles/ticks
+average: 364288 cycles/ticks
+

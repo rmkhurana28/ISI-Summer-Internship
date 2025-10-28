@@ -1,0 +1,48 @@
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -DKYBER_K=2 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c fips202.c symmetric-shake.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed512
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -DKYBER_K=3 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c fips202.c symmetric-shake.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed768
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -DKYBER_K=4 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c fips202.c symmetric-shake.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed1024
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cbd.c:87:13: warning: 'cbd3' defined but not used [-Wunused-function]
+   87 | static void cbd3(poly *r, const uint8_t buf[3*KYBER_N/4])
+      |             ^~~~
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -D KYBER_90S -DKYBER_K=2 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c sha256.c sha512.c aes256ctr.c symmetric-aes.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed512-90s
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -D KYBER_90S -DKYBER_K=3 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c sha256.c sha512.c aes256ctr.c symmetric-aes.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed768-90s
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cc -Wall -Wextra -Wpedantic -Wmissing-prototypes -Wredundant-decls -Wshadow -Wpointer-arith -O3 -fomit-frame-pointer -D KYBER_90S -DKYBER_K=4 kex.c kem.c indcpa.c polyvec.c poly.c ntt.c cbd.c reduce.c verify.c sha256.c sha512.c aes256ctr.c symmetric-aes.c randombytes.c cpucycles.c speed_print.c test_speed.c -o test_speed1024-90s
+cbd.c:147:13: warning: 'cbd5' defined but not used [-Wunused-function]
+  147 | static void cbd5(poly *r, const uint8_t buf[5*KYBER_N/4])
+      |             ^~~~
+cbd.c:117:13: warning: 'cbd4' defined but not used [-Wunused-function]
+  117 | static void cbd4(poly *r, const uint8_t buf[4*KYBER_N/4])
+      |             ^~~~
+cbd.c:87:13: warning: 'cbd3' defined but not used [-Wunused-function]
+   87 | static void cbd3(poly *r, const uint8_t buf[3*KYBER_N/4])
+      |             ^~~~

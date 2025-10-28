@@ -1,0 +1,56 @@
+
+╔═══════════════════════════════════════════╗
+║     Kyber Parameter Tweaks Demo          ║
+║     Variant: Kyber512                    ║
+╚═══════════════════════════════════════════╝
+
+=== Current Kyber Parameters ===
+Variant: Kyber512
+Security Level: 2
+eta1: 3 (standard for K=2)
+eta2: 2 (standard)
+==============================
+
+=== Size Comparison ===
+Current configuration:
+  Compression (du, dv): (5, 9)
+  eta1: 3, eta2: 2
+
+Size impact:
+  Public key:     800 bytes
+  Secret key:    1632 bytes
+  Ciphertext:     736 bytes
+  Shared secret:   32 bytes
+
+Ciphertext size vs standard: -32 bytes (-4.2%)
+
+=== Performance Characteristics ===
+Based on compression parameters:
+  • Compression (du=9, dv=5): >100% slower compression
+  • Overall impact: Moderate (~10-15%)
+  • Trade-off: Use only if size critical
+
+=== Running Kyber Demo ===
+
+1. Generating keypair...
+   ✓ Keypair generated in 0.06 ms
+
+2. Encapsulating (creating ciphertext)...
+   ✓ Ciphertext created in 0.07 ms
+   Ciphertext size: 736 bytes
+
+3. Decapsulating (recovering shared secret)...
+   ✓ Shared secret recovered in 0.08 ms
+
+4. Verifying shared secrets match...
+   ✓ SUCCESS: Shared secrets match!
+   Shared secret (first 16 bytes): 89b92e2d ea4ee992 9f8045fe b939d6b9 
+
+5. Sample data visualization:
+   Public key (first 32 bytes):
+   2d2a7d1c 28528b99 aa18a404 8c3b0f84 d15f3669 7507eca9 0aa988c1 4147d9a9
+   Ciphertext (first 32 bytes):
+   5749154f e5c588af ddc2580c 380a1aa7 46230f09 03736717 0f388f2f be92406f
+
+=== Demo Complete ===
+This configuration demonstrates extreme compression (du=9, dv=5) with significant overhead

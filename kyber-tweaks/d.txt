@@ -1,0 +1,27 @@
+// This is a temporary file
+
+Essential Files I Need:
+1. All Shell Scripts (.sh files)
+text
+- benchmarks/run_cycle_counts.sh
+- benchmarks/generate_report.sh
+- benchmarks/quick_bench.sh
+- cli-tests/scripts/test_all_params.sh
+- cli-tests/scripts/compare_sizes.sh
+- cli-tests/scripts/demo_tweaks.sh
+- kyber-security-analysis/run_all_analysis.sh
+- kyber-dynamic-security-analysis/run_dynamic_analysis.sh
+- kyber-dynamic-security-analysis/setup_dynamic.sh
+2. Key Python Scripts
+text
+- benchmarks/analyze_results.py
+- kyber-security-analysis/scripts/kyber_security_analysis.py
+- kyber-security-analysis/scripts/Kyber.py
+- kyber-dynamic-security-analysis/scripts/dynamic_analyzer.py
+3. Parameter Configuration Files
+text
+- At least one example params_*.h file to understand the format
+- Or just tell me what parameters change between variants
+4. The SageMath Script
+text
+- kyber-dynamic-security-analysis/sage-scripts/kyber_estimator.sage

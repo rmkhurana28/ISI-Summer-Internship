@@ -1,0 +1,4 @@
+Operation,Median,Average
+Keypair,530860,537952
+Sign,2042690,2600552
+Verify,516515,518906

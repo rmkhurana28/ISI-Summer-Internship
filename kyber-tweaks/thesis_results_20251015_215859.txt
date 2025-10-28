@@ -1,0 +1,341 @@
+KYBER PARAMETER TWEAKS - THESIS CHAPTER 5 RESULTS
+Generated: Wed Oct 15 10:04:02 PM IST 2025
+================================================
+
+1. PERFORMANCE ANALYSIS RESULTS
+------------------------------
+
+--- Tables 5.1-5.4: Performance Analysis ---
+
+
+================================================================================
+Table 5.1: Performance analysis of Kyber512 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (10, 4)  | (du, dv) = (11, 3)  | (du, dv) = (9, 5)   
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 499      509      | 760      754      | 974      988      
+poly_decompress           | 72       68       | 594      594      | 571      573      
+polyvec_compress          | 2589     2594     | 2590     2614     | 2589     2599     
+polyvec_decompress        | 1663     1676     | 1521     1538     | 1473     1491     
+indcpa_keypair            | 112220   112870   | 112100   112683   | 112196   113778   
+indcpa_enc                | 131766   133185   | 132193   132594   | 131647   132163   
+indcpa_dec                | 47406    47606    | 47857    48001    | 47738    47924    
+
+================================================================================
+Table 5.2: Performance analysis of Kyber768 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (10, 4)  | (du, dv) = (11, 3)  | (du, dv) = (9, 5)   
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 499      494      | 760      752      | 974      980      
+poly_decompress           | 72       66       | 594      584      | 571      573      
+polyvec_compress          | 3872     3903     | 3896     3924     | 3872     3907     
+polyvec_decompress        | 2519     2541     | 2281     2307     | 2210     2232     
+indcpa_keypair            | 197411   199120   | 197173   198619   | 187673   188998   
+indcpa_enc                | 210616   212929   | 213822   215536   | 206958   209682   
+indcpa_dec                | 61965    62331    | 63009    63247    | 62867    63218    
+
+================================================================================
+Table 5.3: Performance analysis of Kyber1024 for different (du, dv) values
+================================================================================
+Operation                 | (du, dv) = (11, 5)  | (du, dv) = (10, 6)  | (du, dv) = (12, 4)  
+                         | Median   Average  | Median   Average  | Median   Average  
+--------------------------------------------------------------------------------
+poly_compress             | 879      920      | 879      873      | 499      494      
+poly_decompress           | 595      603      | 595      602      | 72       66       
+polyvec_compress          | 5226     5259     | 5226     5290     | 4798     4822     
+polyvec_decompress        | 3064     3083     | 3064     3081     | 2043     2067     
+indcpa_keypair            | 292434   294951   | 292410   295120   | 291199   293436   
+indcpa_enc                | 303003   304733   | 304951   306592   | 302719   305087   
+indcpa_dec                | 77972    78325    | 77497    78783    | 75811    76419    
+
+================================================================================
+Table 5.4: Performance analysis of Kyber with different η1, η2 values
+================================================================================
+Variant         Configuration        Tη1        Tη2        KeyGen     Enc       
+--------------------------------------------------------------------------------
+Kyber512         (η1 = 3, η2 = 2)     3611       2067       112338     133499    
+Kyber512         (η1 = 5, η2 = 3)     5725       3635       122717     145089    
+Kyber768         (η1 = 2, η2 = 2)     2067       2067       188196     206365    
+Kyber768         (η1 = 4, η2 = 4)     3278       3278       195772     214819    
+Kyber1024        (η1 = 2, η2 = 2)     2067       2115       291960     303122    
+Kyber1024        (η1 = 4, η2 = 4)     3325       3325       300984     314142    
+
+================================================================================
+PERFORMANCE IMPACT SUMMARY
+================================================================================
+
+Test: kyber1024_special_du10_dv6
+Description: Kyber1024 with du=10, dv=6
+
+  KYBER512:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  112172 cycles (-0.1% vs baseline)
+    indcpa_enc          :  130198 cycles (-2.5% vs baseline)
+    indcpa_dec          :   47002 cycles (-0.8% vs baseline)
+
+  KYBER768:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  188101 cycles (-0.1% vs baseline)
+    indcpa_enc          :  206910 cycles (+0.3% vs baseline)
+    indcpa_dec          :   62891 cycles (+0.3% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     879 cycles (-9.8% vs baseline)
+    indcpa_keypair      :  292410 cycles (+0.2% vs baseline)
+    indcpa_enc          :  304951 cycles (+0.6% vs baseline)
+    indcpa_dec          :   77497 cycles (+0.3% vs baseline)
+
+Test: kyber1024_special_du11_dv5
+Description: Kyber1024 with du=11, dv=5
+
+  KYBER512:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  112243 cycles (-0.1% vs baseline)
+    indcpa_enc          :  132003 cycles (-1.1% vs baseline)
+    indcpa_dec          :   47715 cycles (+0.7% vs baseline)
+
+  KYBER768:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  188243 cycles (+0.0% vs baseline)
+    indcpa_enc          :  206483 cycles (+0.1% vs baseline)
+    indcpa_dec          :   63034 cycles (+0.6% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     879 cycles (-9.8% vs baseline)
+    indcpa_keypair      :  292434 cycles (+0.2% vs baseline)
+    indcpa_enc          :  303003 cycles (-0.0% vs baseline)
+    indcpa_dec          :   77972 cycles (+0.9% vs baseline)
+
+Test: kyber1024_special_du12_dv4
+Description: Kyber1024 with du=12, dv=4
+
+  KYBER512:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  112243 cycles (-0.1% vs baseline)
+    indcpa_enc          :  129415 cycles (-3.1% vs baseline)
+    indcpa_dec          :   46052 cycles (-2.8% vs baseline)
+
+  KYBER768:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  188030 cycles (-0.1% vs baseline)
+    indcpa_enc          :  206625 cycles (+0.1% vs baseline)
+    indcpa_dec          :   61656 cycles (-1.6% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     499 cycles (-48.8% vs baseline)
+    indcpa_keypair      :  291199 cycles (-0.3% vs baseline)
+    indcpa_enc          :  302719 cycles (-0.1% vs baseline)
+    indcpa_dec          :   75811 cycles (-1.9% vs baseline)
+
+Test: test1_compression_du10_dv4
+Description: Compression parameters: du=10, dv=4
+
+  KYBER512:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  112220 cycles (-0.1% vs baseline)
+    indcpa_enc          :  131766 cycles (-1.3% vs baseline)
+    indcpa_dec          :   47406 cycles (+0.1% vs baseline)
+
+  KYBER768:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  197411 cycles (+4.9% vs baseline)
+    indcpa_enc          :  210616 cycles (+2.1% vs baseline)
+    indcpa_dec          :   61965 cycles (-1.1% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     974 cycles (-0.1% vs baseline)
+    indcpa_keypair      :  291794 cycles (-0.1% vs baseline)
+    indcpa_enc          :  303265 cycles (+0.0% vs baseline)
+    indcpa_dec          :   77331 cycles (+0.1% vs baseline)
+
+Test: test2_compression_du11_dv3
+Description: Compression parameters: du=11, dv=3
+
+  KYBER512:
+    poly_compress       :     760 cycles (+52.3% vs baseline)
+    indcpa_keypair      :  112100 cycles (-0.2% vs baseline)
+    indcpa_enc          :  132193 cycles (-1.0% vs baseline)
+    indcpa_dec          :   47857 cycles (+1.0% vs baseline)
+
+  KYBER768:
+    poly_compress       :     760 cycles (+52.3% vs baseline)
+    indcpa_keypair      :  197173 cycles (+4.8% vs baseline)
+    indcpa_enc          :  213822 cycles (+3.6% vs baseline)
+    indcpa_dec          :   63009 cycles (+0.5% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     499 cycles (-48.8% vs baseline)
+    indcpa_keypair      :  291294 cycles (-0.2% vs baseline)
+    indcpa_enc          :  303644 cycles (+0.2% vs baseline)
+    indcpa_dec          :   77568 cycles (+0.4% vs baseline)
+
+Test: test3_compression_du9_dv5
+Description: Compression parameters: du=9, dv=5
+
+  KYBER512:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  112196 cycles (-0.1% vs baseline)
+    indcpa_enc          :  131647 cycles (-1.4% vs baseline)
+    indcpa_dec          :   47738 cycles (+0.8% vs baseline)
+
+  KYBER768:
+    poly_compress       :     974 cycles (+95.2% vs baseline)
+    indcpa_keypair      :  187673 cycles (-0.3% vs baseline)
+    indcpa_enc          :  206958 cycles (+0.3% vs baseline)
+    indcpa_dec          :   62867 cycles (+0.3% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     998 cycles (+2.4% vs baseline)
+    indcpa_keypair      :  291271 cycles (-0.2% vs baseline)
+    indcpa_enc          :  307255 cycles (+1.4% vs baseline)
+    indcpa_dec          :   78115 cycles (+1.1% vs baseline)
+
+Test: test4_eta_variations
+Description: Modified eta values for noise distribution
+
+  KYBER512:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  122717 cycles (+9.2% vs baseline)
+    indcpa_enc          :  145089 cycles (+8.7% vs baseline)
+    indcpa_dec          :   49164 cycles (+3.8% vs baseline)
+
+  KYBER768:
+    poly_compress       :     499 cycles (+0.0% vs baseline)
+    indcpa_keypair      :  195772 cycles (+4.0% vs baseline)
+    indcpa_enc          :  214819 cycles (+4.1% vs baseline)
+    indcpa_dec          :   61941 cycles (-1.2% vs baseline)
+
+  KYBER1024:
+    poly_compress       :     974 cycles (-0.1% vs baseline)
+    indcpa_keypair      :  300984 cycles (+3.1% vs baseline)
+    indcpa_enc          :  314142 cycles (+3.6% vs baseline)
+    indcpa_dec          :   77402 cycles (+0.2% vs baseline)
+
+2. SECURITY ANALYSIS RESULTS
+----------------------------
+
+--- Tables 5.5-5.8: Security Analysis ---
+
+KYBER SECURITY ANALYSIS
+================================================================================
+
+=== Test Result 5 ===
+# Parameter sets
+ps_light = KyberParameterSet(256, 2, 3, 2, 3329, 2**12, 2**10, 2**4, ke_ct=2)
+ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2**12, 2**10, 2**4)
+ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2**12, 2**11, 2**5)
+
+=== Test Result 6 ===
+# Parameter sets
+ps_light = KyberParameterSet(256, 2, 3, 2, 3329, 2**12, 2**11, 2**3, ke_ct=2)
+ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2**12, 2**11, 2**3)
+ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2**12, 2**12, 2**4)
+
+=== Test Result 7 ===
+# Parameter sets
+ps_light = KyberParameterSet(256, 2, 3, 2, 3329, 2**12, 2**9, 2**5, ke_ct=2)
+ps_recommended = KyberParameterSet(256, 3, 2, 2, 3329, 2**12, 2**9, 2**5)
+ps_paranoid = KyberParameterSet(256, 4, 2, 2, 3329, 2**12, 2**10, 2**6)
+
+
+=== Table 5.5: Security analysis of Kyber512 with different du, dv values ===
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     |               | d    | b   | m   | Core-SVP      | Core-SVP    | δ   | C   |
+|                                     |               |      |     |     | (classical)   | (quantum)   |     |     |
++=====================================+===============+======+=====+=====+===============+=============+=====+=====+
+| (du = 10, dv = 4) 2^-161 (800, 768) | Primal Attack | 999  | 406 | 486 | 118           | 107         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1024 | 403 | 512 | 117           | 106         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 11, dv = 3) 2^-148 (800, 800) | Primal Attack | 999  | 406 | 486 | 118           | 107         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1024 | 403 | 512 | 117           | 106         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 9, dv = 5) 2^-98 (800, 736)   | Primal Attack | 999  | 406 | 486 | 118           | 107         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1024 | 403 | 512 | 117           | 106         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+
+
+=== Table 5.6: Security analysis of Kyber768 with different du, dv values ===
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       |               | d    | b   | m   | Core-SVP      | Core-SVP    | δ   | C   |
+|                                       |               |      |     |     | (classical)   | (quantum)   |     |     |
++=======================================+===============+======+=====+=====+===============+=============+=====+=====+
+| (du = 10, dv = 4) 2^-165 (1184, 1088) | Primal Attack | 1419 | 626 | 650 | 183           | 166         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1418 | 620 | 650 | 181           | 164         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 11, dv = 3) 2^-151 (1184, 1152) | Primal Attack | 1419 | 626 | 650 | 183           | 166         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1418 | 620 | 650 | 181           | 164         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 9, dv = 5) 2^-99 (1184, 1024)   | Primal Attack | 1419 | 626 | 650 | 183           | 166         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1418 | 620 | 650 | 181           | 164         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+
+
+=== Table 5.7: Security analysis of Kyber1024 with different du, dv values ===
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       |               | d    | b   | m   | Core-SVP      | Core-SVP    | δ   | C   |
+|                                       |               |      |     |     | (classical)   | (quantum)   |     |     |
++=======================================+===============+======+=====+=====+===============+=============+=====+=====+
+| (du = 11, dv = 5) 2^-175 (1568, 1568) | Primal Attack | 1885 | 878 | 860 | 256           | 232         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1862 | 868 | 838 | 253           | 230         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 12, dv = 4) 2^-183 (1568, 1664) | Primal Attack | 1885 | 878 | 860 | 256           | 232         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1862 | 868 | 838 | 253           | 230         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| (du = 10, dv = 6) 2^-151 (1568, 1472) | Primal Attack | 1885 | 878 | 860 | 256           | 232         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                       | Dual Attack   | 1862 | 868 | 838 | 253           | 230         |     |     |
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++---------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+
+
+=== Table 5.8: Security analysis of Kyber with different η1, η2 values ===
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     |               | d    | b   | m   | Core-SVP      | Core-SVP    | δ   | C   |
+|                                     |               |      |     |     | (classical)   | (quantum)   |     |     |
++=====================================+===============+======+=====+=====+===============+=============+=====+=====+
+| Kyber512                            | Primal Attack | 1027 | 439 | 514 | 128           | 116         |     |     |
+| (η1 = 5, η2 = 3) 2^-85 (800, 768)   |               |      |     |     |               |             |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1027 | 515 | 436 | 127           | 115         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| Kyber768                            | Primal Attack | 1489 | 688 | 720 | 201           | 182         |     |     |
+| (η1 = 4, η2 = 4) 2^-50 (1184, 1088) |               |      |     |     |               |             |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1487 | 719 | 683 | 199           | 181         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+| Kyber1024                           | Primal Attack | 1936 | 961 | 911 | 281           | 254         |     |     |
+| (η1 = 4, η2 = 4) 2^-47 (1568, 1568) |               |      |     |     |               |             |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+|                                     | Dual Attack   | 1930 | 953 | 906 | 278           | 252         |     |     |
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
++-------------------------------------+---------------+------+-----+-----+---------------+-------------+-----+-----+
+
+3. CORRECTNESS TEST RESULTS
+--------------------------
+
+All parameter configurations:
+  baseline_standard: SUCCESS
+  test1_du10_dv4: SUCCESS
+  test2_du11_dv3: SUCCESS
+  test3_du9_dv5: SUCCESS
+  test4_eta_variations: SUCCESS

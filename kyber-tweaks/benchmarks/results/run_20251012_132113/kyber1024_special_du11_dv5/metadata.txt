@@ -1,0 +1,4 @@
+Test Name: kyber1024_special_du11_dv5
+Config File: params_kyber1024_du11_dv5.h
+Description: Kyber1024 with du=11, dv=5
+Timestamp: Sun Oct 12 01:22:13 PM IST 2025

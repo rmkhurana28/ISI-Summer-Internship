@@ -1,0 +1,4 @@
+Test Name: test4_eta_variations
+Config File: params_test4_eta_variations.h
+Description: Modified eta values for noise distribution
+Timestamp: Sun Oct 12 11:16:06 AM IST 2025
